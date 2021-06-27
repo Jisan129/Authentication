@@ -25,7 +25,14 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',authRouter)
 app.use('/register',registerRoute)
-
+/*
+app.post('/login',(req,res)=>{
+    console.log("no")
+/!*    const email=req.body.email
+    const password=req.body.password
+    console.log(`Email ${email}  Password ${password}`)*!/
+})
+*/
 
 app.use('/dashboard',dashboardRoute);
 
