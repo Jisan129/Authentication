@@ -4,7 +4,7 @@ const connection=require('../connection')
 
 
 router.get("/",(req,res)=>{
-  connection.query("insert into user (email,password) values (\"abcd@email.com\",\"1234\");",(err,rows,fields)=>{
+  connection.query("insert into user (email,password) values (\"tasnimBro@example.com\",\"1234\");",(err,rows,fields)=>{
        if(!err){
             res.send(rows)
        }
@@ -13,4 +13,5 @@ router.get("/",(req,res)=>{
        }
   })
 })
+
 module.exports=router

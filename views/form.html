@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
 </head>
 <body>
@@ -12,13 +13,13 @@
 <form action="/register" method="post">
     <div class="container">
         <label for="email">Email</label><br>
-        <input type="text" id="email" class="email" placeholder="Enter your email address" required>
+        <input type="text" id="email" name="email" class="email" placeholder="Enter your email address" required>
         <br>
         <label for="name">What is your name bro?</label><br>
         <input type="text" id="name" class="name" placeholder="Enter your name" required>
         <br>
         <label for="password">Password</label><br>
-        <input type="password" id="password" class="password" placeholder="Enter your password" required><br>
+        <input type="password" id="password" class="password" name="password" placeholder="Enter your password" required><br>
 
         <label for="psw_repeat">Repeat your Password</label><br>
         <input type="password" id="psw_repeat" class="psw_repeat" placeholder="Enter your password again" required><br>
@@ -32,10 +33,10 @@
         <br><input type="radio" id="others" class="gender" name="gender" value="Gender">
 
 
+        <button type="submit">Register</button>
 
     </div>
 
-    <button type="submit">Register</button>
 </form>
 </body>
 
