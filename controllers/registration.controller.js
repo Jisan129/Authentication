@@ -25,13 +25,13 @@ const sendData = (req,res)=>{
 
         connection.query(queryString, [email, newpassword], (err, rows, fields) => {
             if (!err) {
-                console.log("ok");
-            } else {
+                        res.redirect('/login')
+                } else {
                 console.log(err)
             }
         })
     })
         .catch(err => console.error(err.message))
-    res.send("ok")
+
 }
 module.exports={getRegistration,sendData}

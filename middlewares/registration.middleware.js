@@ -6,15 +6,21 @@ const saltRound = 10;
 const checkRegistration = (req, res, next) => {
     const password = req.body.password;
     const email = req.body.email;
-    const name = req.body.name;
     const confirm = req.body.confirm_password
+    console.log(password,email,confirm)
+    console.log(password.length)
 
-    if (password.length < 6) {
-        res.redirect('/register')
+   if (password.length < 6) {
+       console.log('length')
+       res.redirect('/register')
     } else if (password !== confirm) {
-        res.redirect('/register')
+       console.log('Password same')
+
+       res.redirect('/register')
     } else if (!email.includes("@gmail.com")) {
-        res.redirect('/register')
+       console.log('mail problem')
+
+       res.redirect('/register')
     } else {
         next()
     }
