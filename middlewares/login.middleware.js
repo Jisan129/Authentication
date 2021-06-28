@@ -1,6 +1,6 @@
-const {insertData} = require('../routes/userDatabase.routes')
 
 const checkUser=(req, res,next) =>{
-    insertData()
+    const email = req.body.email
+    const password = req.body.password
     next()
 }

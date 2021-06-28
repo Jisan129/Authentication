@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+//static public
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -26,7 +27,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',authRouter)
 
-
 app.use('/register',registerRoute)
 
 app.use('/dashboard',dashboardRoute);
@@ -36,3 +36,9 @@ app.listen(5005)
 
 
 module.exports = app;
+
+
+app.post('/login2',(req,res)=>{
+    const email = req.body.email;
+    console.log(email)
+})
