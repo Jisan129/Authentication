@@ -8,31 +8,26 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth.routes');
 const registerRoute = require('./routes/register');
+const userdata=require('./routes/userDatabase.routes')
+
 const dashboardRoute = require('./routes/dashboard.routes');
 
 const app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
 
+app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',authRouter)
+
+
 app.use('/register',registerRoute)
-/*
-app.post('/login',(req,res)=>{
-    console.log("no")
-/!*    const email=req.body.email
-    const password=req.body.password
-    console.log(`Email ${email}  Password ${password}`)*!/
-})
-*/
 
 app.use('/dashboard',dashboardRoute);
 
