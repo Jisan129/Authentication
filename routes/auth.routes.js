@@ -4,7 +4,9 @@ const bodyParser = require('body-parser')
 const connection = require('../connection')
 const useFunction = require('./userDatabase.routes')
 const bcrypt = require('bcrypt');
+'use strict';
 
+var sessionstorage = require('sessionstorage');
 
 routes.use(bodyParser.urlencoded({extended: false}));
 
@@ -12,23 +14,27 @@ const getLogin = require('../controllers/auth.controller')
 
 routes.get('/', getLogin)
 routes.post('/', (req, res) => {
-    const email = req.body.email
+    const email = req.body.email.toString()
     const password = req.body.password.toString()
     const queryString = `select password from user where email=?;`
     var newpassword = ''
     var temp = ''
 
+
     connection.query(queryString, email, (err, result) => {
         if (!err) {
             newpassword = result[0].password
+            console.log(newpassword)
+            console.log(password)
+            bcrypt.compare(password, newpassword, function (err,isValid) {
+                if (isValid) {
+                    sessionstorage.setItem('user' , email)
+                    res.redirect('/dashboard')
+                } else {
+                    res.send("Error")
+                }
 
-            bcrypt.compare(password,newpassword).then(res=>{
-                console.log(res)
-            }).catch(err=>console.error(err.message))
-
-
-        } else {
-            console.log(err)
+            })
         }
     })
 
