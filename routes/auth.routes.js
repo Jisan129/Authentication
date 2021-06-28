@@ -4,7 +4,9 @@ const bodyParser = require('body-parser')
 const connection = require('../connection')
 const useFunction = require('./userDatabase.routes')
 const bcrypt = require('bcrypt');
+'use strict';
 
+var sessionstorage = require('sessionstorage');
 
 routes.use(bodyParser.urlencoded({extended: false}));
 
@@ -26,6 +28,7 @@ routes.post('/', (req, res) => {
             console.log(password)
             bcrypt.compare(password, newpassword, function (err,isValid) {
                 if (isValid) {
+                    sessionstorage.setItem('user' , email)
                     res.redirect('/dashboard')
                 } else {
                     res.send("Error")
